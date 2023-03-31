@@ -37,3 +37,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
+      - name: echo User info
+        run: |
+          echo "$GITHUB_CONTEXT"
