@@ -41,3 +41,19 @@ jobs:
       - name: echo User info
         run: |
           echo $GITHUB_ACTOR
+          
+      - name: echo output
+        id: output_step
+        run: |
+          passed="PASS"
+          echo "::set-output name=passed::$passed"
+          
+      - name: test 
+        if: ${{ steps.output_step.outputs.passed == "PASS" }}
+        run: |
+          echo "pass"
+          
+      - name: reverse step
+        if: false == ${{ steps.output_step.outputs.passed == "PASS" }}
+        run: |
+          echo "fail"
