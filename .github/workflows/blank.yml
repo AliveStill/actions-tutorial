@@ -57,3 +57,18 @@ jobs:
         if: false == ${{ steps.output_step.outputs.passed == 'PASS' }}
         run: |
           echo "fail"
+          
+      - name: case check
+        run: |
+          case ${{ setps.output_step.output.passed }} in 
+            PASS)
+              echo "PASS"
+              ;;
+            FAIL)
+              echo "FAIL"
+              ;;
+            *)
+              echo "default"
+              ;;
+          esac 
+          
