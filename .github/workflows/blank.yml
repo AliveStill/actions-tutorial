@@ -60,7 +60,7 @@ jobs:
           
       - name: case check
         run: |
-          case ${{ setps.output_step.output.passed }} in 
+          case ${{ steps.output_step.output.passed }} in 
             PASS)
               echo "PASS"
               ;;
@@ -70,5 +70,5 @@ jobs:
             *)
               echo "default"
               ;;
-          esac 
+          esac
           
