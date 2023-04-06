@@ -54,6 +54,6 @@ jobs:
           echo "pass"
           
       - name: reverse step
-        if: false == ${{ steps.output_step.outputs.passed == "PASS" }}
+        if: false == ${{ steps.output_step.outputs.passed == 'PASS' }}
         run: |
           echo "fail"
