@@ -71,4 +71,36 @@ jobs:
               echo "default"
               ;;
           esac
-          
+
+  test-job:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: test1
+        env: 
+          THRESHOLD: ${{ 0.25 }}
+        run: |
+          echo line1 >> this.txt
+          echo line2 >> this.txt
+          echo line3 >> this.txt 
+          echo line4 >> this.txt
+          succeed=2
+          total=$(cat this.txt | wc -l)
+          threshold=$(echo "scale=0;${{env.THRESHOLD}}*$total" | bc)
+          echo "total=$total" 
+          echo "threshold=$threshold"
+          if [ `echo "$succeed >= $threshold" | bc` -eq 1 ] ; then 
+            echo "test1 passed" 
+          else
+            echo "test1 failed"
+          fi 
+
+      
+        
+
