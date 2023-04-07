@@ -53,14 +53,14 @@ jobs:
           passed: ${{ steps.output_step.outputs.passed }}
         if: ${{  env.passed == 'PASS' }}
         run: |
-          echo ${{ steps.output_step.output.passed }} 
+          echo ${{env.passed}}
           echo "pass"
           
-      - name: reverse step
-        if: false == ${{ steps.output_step.outputs.passed == 'PASS' }}
-        run: |
-          echo ${{ steps.output_step.output.passed }} 
-          echo "fail"
+      # - name: reverse step
+      #   if: false == ${{ steps.output_step.outputs.passed == 'PASS' }}
+      #   run: |
+      #     echo ${{ steps.output_step.output.passed }} 
+      #     echo "fail"
           
       - name: case check
         run: |
