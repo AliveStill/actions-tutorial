@@ -59,7 +59,7 @@ jobs:
       - name: reverse step
         env: 
           passed: ${{ steps.output_step.outputs.passed }} 
-        if: false == ${{  env.passed == 'PASS' }}
+        if: ${{  env.passed == 'FAIL' }}
         run: |
           echo "env.passed = ${{env.passed}}"
           echo "fail"
