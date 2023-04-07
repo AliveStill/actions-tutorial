@@ -49,9 +49,11 @@ jobs:
           echo "::set-output name=passed::$passed"
           
       - name: test 
-        if: ${{ steps.output_step.outputs.passed == 'PASS' }}
+        env:
+          passed: ${{ steps.output_step.outputs.passed }}
+        if: ${{  env.passed == 'PASS' }}
         run: |
-          echo echo ${{ steps.output_step.output.passed }} 
+          echo ${{ steps.output_step.output.passed }} 
           echo "pass"
           
       - name: reverse step
