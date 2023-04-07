@@ -51,11 +51,13 @@ jobs:
       - name: test 
         if: ${{ steps.output_step.outputs.passed == 'PASS' }}
         run: |
+          echo echo ${{ steps.output_step.output.passed }} 
           echo "pass"
           
       - name: reverse step
         if: false == ${{ steps.output_step.outputs.passed == 'PASS' }}
         run: |
+          echo ${{ steps.output_step.output.passed }} 
           echo "fail"
           
       - name: case check
