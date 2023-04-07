@@ -60,6 +60,7 @@ jobs:
           
       - name: case check
         run: |
+          echo ${{ steps.output_step.output.passed }} 
           case ${{ steps.output_step.output.passed }} in 
             PASS)
               echo "PASS"
