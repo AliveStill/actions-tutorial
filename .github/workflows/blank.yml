@@ -109,7 +109,13 @@ jobs:
           else
             echo "test1 failed"
           fi 
-
+      
+      - name: eval 
+        env: 
+          path: ${PATH}/this.txt
+        run: |
+          this=$(echo ${{env.path}} | xargs eval)
+          echo $this
       
         
 
