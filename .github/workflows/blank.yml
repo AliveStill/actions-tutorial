@@ -114,7 +114,9 @@ jobs:
         env: 
           path: ${PATH}/this.txt
         run: |
-          this=$(echo ${{env.path}} | xargs eval)
+          # this=$(echo ${{env.path}} | xargs eval)
+          # echo $this
+          this=$(eval echo ${{env.path}})
           echo $this
       
         
